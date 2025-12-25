@@ -28,13 +28,13 @@ public class InputManager : MonoBehaviour
     public static InputManager instance;
 
     // Reference to the PlayerInput component.
-    private PlayerInput input;
+    PlayerInput input;
 
     // Variables to store input values.
-    private Vector2 move; // Stores the movement vector.
-    private bool jump; // Stores the jump state.
+    Vector2 move; // Stores the movement vector.
+    bool jump; // Stores the jump state.
 
-    private void Awake()
+    void Awake()
     {
         // Ensure that only one instance of InputManager exists.
         if (instance == null)
@@ -53,19 +53,19 @@ public class InputManager : MonoBehaviour
         input = GetComponent<PlayerInput>();
     }
 
-    private void OnEnable()
+    void OnEnable()
     {
         // Subscribe to the onActionTriggered event to handle input actions.
         input.onActionTriggered += OnAction;
     }
 
-    private void OnDisable()
+    void OnDisable()
     {
         // Unsubscribe from the onActionTriggered event when the object is disabled.
         input.onActionTriggered -= OnAction;
     }
 
-    private void OnAction(InputAction.CallbackContext context)
+    void OnAction(InputAction.CallbackContext context)
     {
         // Handle input actions based on their names.
         switch (context.action.name)
@@ -81,7 +81,7 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    private void SetBool(InputAction.CallbackContext context, ref bool value)
+    void SetBool(InputAction.CallbackContext context, ref bool value)
     {
         // Update the boolean value based on the input action's phase.
         if (context.performed)
