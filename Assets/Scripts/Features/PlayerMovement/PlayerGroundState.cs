@@ -29,6 +29,11 @@ public class PlayerGroundState : PlayerMoveState
     // Called when the player enters the ground state.
     public override void StartState(PlayerController player)
     {
+        if (step != null)
+        {
+            StopCoroutine(step);
+        }
+
         canJump = false; // Initialize jump availability.
         isMoving = false; // Initialize movement state.
         player.VerticalSpeed = stickForce; // Apply downward force to keep the player grounded.
@@ -51,6 +56,7 @@ public class PlayerGroundState : PlayerMoveState
                 if (step == null)
                 {
                     step = StartCoroutine(Anticipation(player));
+                    step = null;
                 }
             }
             else
@@ -106,13 +112,13 @@ public class PlayerGroundState : PlayerMoveState
         if (step != null)
         {
             StopCoroutine(step);
+            step = null;
         }
     }
 
     // Coroutine to handle the anticipation phase before the player starts running.
     IEnumerator Anticipation(PlayerController player)
     {
-        IsRunning = false; // Reset running state.
         player.Controller.enabled = false; // Disable the CharacterController temporarily.
         transform.Translate(new Vector3(inputX * stepDistance, 0f, 0f)); // Move the player slightly forward.
         player.Controller.enabled = true; // Re-enable the CharacterController.
