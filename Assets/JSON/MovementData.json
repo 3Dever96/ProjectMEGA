@@ -1,0 +1,34 @@
+{
+  "MovementData": {
+    "Horizontal": {
+      "Universal": {
+        "StepDistance": "0.0625 m",
+        "ClassicDelay": "0.11 s",
+        "XDelay": "0.05 s"
+      },
+      "GroundSpeed": {
+        "Classic": "5.15 m/s",
+        "X": "5.625 m/s",
+        "Slide": "9.375 m/s",
+        "Dash": "13.125 m/s"
+      },
+      "AirSpeed": {
+        "Classic": "4.92 m/s",
+        "X": "5.374 m/s",
+        "Dash": "13.125 m/s",
+        "Hover": "5.374 m/s"
+      },
+      "WaterSpeed": {
+        "Classic": "4.504 m/s",
+        "X": "4.92 m/s"
+      }
+    },
+    "Vertical": {
+      "ClassicJump": "18.28 m/s",
+      "XJump": "19.95 m/s",
+      "NormalGravity": "54 m/s^",
+      "WaterGravity": "27 m/s^",
+      "WallSlideSpeed": "10.8 m/s^"
+    }
+  }
+}
