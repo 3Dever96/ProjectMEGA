@@ -47,6 +47,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fafe50fc4e85a3b45b7edfa6bb4c9c94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
+  stepDistance: 0.0625
+  stepTime: 0.11
+  moveSpeed: 5.15
+  actionSpeed: 9.375
+  jumpSpeed: 18.75
+  gravity: -54
+  stickForce: -5
+  terminalVelocity: -26.25
+  slideSpeed: -2
+  hasDoubleJump: 0
+  hasAirDash: 0
 --- !u!114 &100029364087346319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,11 +70,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f69922003e82a7d4c86b34bab72e5319, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerGroundState
-  moveSpeed: 5.15
-  stepDistance: 0.0625
-  stepTime: 0.11
-  stickForce: -5
-  jumpSpeed: 18.74
 --- !u!114 &1449446143776011100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,9 +82,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ec17a5ab1129d342875a900b5307d7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAirState
-  moveSpeed: 4.92
-  gravity: -54
-  fallSpeed: -25
+  dragFactor: 0.955
 --- !u!1001 &8886215891057883922
 PrefabInstance:
   m_ObjectHideFlags: 0

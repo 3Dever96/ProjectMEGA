@@ -3,6 +3,13 @@ using UnityEngine;
 // Abstract base class for player movement states.
 public abstract class PlayerMoveState : MonoBehaviour
 {
+    protected CharacterData profile;
+
+    protected virtual void Start()
+    {
+        profile = GetComponent<CharacterData>();
+    }
+
     // Called when the player enters this state.
     public abstract void StartState(PlayerController player);
 

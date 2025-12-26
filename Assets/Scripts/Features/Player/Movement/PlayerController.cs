@@ -54,6 +54,12 @@ public class PlayerController : MonoBehaviour
         set;
     }
 
+    public Vector3 LookDirection
+    {
+        get;
+        set;
+    }
+
     // Called when the script is first initialized.
     void Start()
     {
@@ -111,5 +117,12 @@ public class PlayerController : MonoBehaviour
         AirState = air;
 
         SetState(GroundState);
+    }
+
+    public void FaceDirection()
+    {
+        Vector3 dir = Vector3.Angle(transform.forward, LookDirection) >= 135f ? -Vector3.forward : LookDirection;
+
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(dir), 500f * Time.deltaTime);
     }
 }
