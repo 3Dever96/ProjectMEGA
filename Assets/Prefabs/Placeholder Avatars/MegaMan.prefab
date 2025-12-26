@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4962189111828628442}
   - component: {fileID: 100029364087346319}
   - component: {fileID: 1449446143776011100}
+  - component: {fileID: 4652701534560683448}
   m_Layer: 0
   m_Name: MegaMan
   m_TagString: Untagged
@@ -47,6 +48,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fafe50fc4e85a3b45b7edfa6bb4c9c94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
+  height: 0
+  radius: 0
   stepDistance: 0.0625
   stepTime: 0.11
   moveSpeed: 5.15
@@ -57,7 +60,6 @@ MonoBehaviour:
   terminalVelocity: -26.25
   slideSpeed: -2
   hasDoubleJump: 0
-  hasAirDash: 0
 --- !u!114 &100029364087346319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,6 +85,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAirState
   dragFactor: 0.955
+--- !u!114 &4652701534560683448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8776552625845588758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08caee5995e712a4ba4b9c5bab59d16a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSlideState
+  actionTime: 0.433
+  shareVelocity: 0
 --- !u!1001 &8886215891057883922
 PrefabInstance:
   m_ObjectHideFlags: 0

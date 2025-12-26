@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 // Represents the player's movement state while on the ground.
@@ -11,22 +10,31 @@ public class PlayerGroundState : PlayerMoveState
         set;
     }
 
+    // Tracks the time remaining for the player to transition from stepping to running.
     float currentStepTime;
 
+    // Flags to indicate the player's movement and stepping state.
     bool isMoving; // Indicates whether the player is currently moving.
-    bool isStepping;
+    bool isStepping; // Indicates whether the player is currently stepping.
 
-    float inputX; // Horizontal input value.
+    // Horizontal input value.
+    float inputX;
 
+    // Flags to determine if the player can perform certain actions.
     bool canJump; // Indicates whether the player can jump.
+    bool canAction; // Indicates whether the player can perform an action.
 
     // Called when the player enters the ground state.
     public override void StartState(PlayerController player)
     {
-        canJump = false; // Initialize jump availability.
-        isMoving = false; // Initialize movement state.
+        // Initialize state-specific flags and variables.
+        canJump = false; // The player cannot jump initially.
+        canAction = false; // The player cannot perform actions initially.
+        isMoving = false; // The player is not moving initially.
         player.VerticalSpeed = profile.StickForce; // Apply downward force to keep the player grounded.
-        currentStepTime = profile.StepTime;
+        currentStepTime = profile.StepTime; // Set the initial step time.
+
+        // If the player has no direction set, default to facing forward.
         if (player.LookDirection == Vector3.zero)
         {
             player.LookDirection = player.transform.forward;
@@ -40,25 +48,31 @@ public class PlayerGroundState : PlayerMoveState
         inputX = InputManager.instance.Move.x;
 
         // If there is horizontal input, handle movement and running state.
-        if (inputX != 0f && !Physics.CheckSphere(player.transform.position + Vector3.right * 0.5f * Mathf.Sign(inputX) + Vector3.up, 0.1f, LayerMask.GetMask("Solid")))
+        if (inputX != 0f)
         {
-            isMoving = true;
+            isMoving = true; // The player is moving.
 
+            // Update the player's look direction based on the input.
             player.LookDirection = Vector3.right * Mathf.Sign(inputX);
 
-            // If the player is not running, start the anticipation coroutine.
+            // If the player is not running, handle stepping logic.
             if (!IsRunning)
             {
                 if (!isStepping)
                 {
+                    // Move the player a small step in the input direction.
                     player.Controller.Move(Vector3.right * Mathf.Sign(inputX) * profile.StepDistance);
-                    isStepping = true;
+                    isStepping = true; // Set stepping flag to true.
                 }
+
+                // Decrease the step time.
                 currentStepTime -= Time.deltaTime;
+
+                // If the step time has elapsed, transition to running state.
                 if (currentStepTime <= 0f)
                 {
                     currentStepTime = 0f;
-                    IsRunning = true;
+                    IsRunning = true; // Set running flag to true.
                 }
             }
             else
@@ -69,32 +83,34 @@ public class PlayerGroundState : PlayerMoveState
         }
         else
         {
-            // If the player is not moving, reset the running state.
+            // If the player is not moving, reset the running and stepping states.
             if (!isMoving)
             {
-                IsRunning = false;
-                isStepping = false;
-                currentStepTime = profile.StepTime;
+                IsRunning = false; // Reset running flag.
+                isStepping = false; // Reset stepping flag.
+                currentStepTime = profile.StepTime; // Reset step time.
             }
 
-            isMoving = false;
+            isMoving = false; // Set moving flag to false.
 
             // Stop the player's movement.
             player.CurrentSpeed = 0f;
         }
 
+        // Make the player face the direction they are moving.
         player.FaceDirection();
 
         // Handle jumping logic.
         if (InputManager.instance.Jump && canJump)
         {
-            player.VerticalSpeed = profile.JumpSpeed; // Apply vertical speed for jumping.
+            // Apply vertical speed for jumping.
+            player.VerticalSpeed = profile.JumpSpeed;
         }
 
         // Reset jump availability when the jump button is released.
         if (!InputManager.instance.Jump && !canJump)
         {
-            canJump = true;
+            canJump = true; // Allow the player to jump again.
         }
 
         // Move the player based on the current velocity.
@@ -105,15 +121,27 @@ public class PlayerGroundState : PlayerMoveState
     public override void ChangeState(PlayerController player)
     {
         // Transition to the air state if the player is moving upward or not touching the ground.
-        if (player.VerticalSpeed > 0f || !Physics.CheckSphere(transform.position, player.Controller.radius - 0.1f, LayerMask.GetMask("Solid")))
+        if (player.VerticalSpeed > 0f || !Physics.CheckSphere(player.transform.position, player.Controller.radius - 0.1f, LayerMask.GetMask("Solid")))
         {
             player.SetState(player.AirState);
+        }
+
+        // Transition to the action state if the action button is pressed and the player can perform an action.
+        if (InputManager.instance.Action && canAction)
+        {
+            player.SetState(player.ActionState);
+        }
+
+        // Enable the ability to perform an action if the action button is released.
+        if (!InputManager.instance.Action && !canAction)
+        {
+            canAction = true;
         }
     }
 
     // Called when the player exits the ground state.
     public override void ExitState(PlayerController player)
     {
-        
+        // Placeholder for any cleanup or reset logic when exiting the ground state.
     }
 }

@@ -33,6 +33,13 @@ public class PlayerController : MonoBehaviour
         private set;
     }
 
+    // Reference to the player's action state (e.g., dashing or special actions).
+    public PlayerActionState ActionState
+    {
+        get;
+        private set;
+    }
+
     // The current horizontal movement speed of the player.
     public float CurrentSpeed
     {
@@ -54,6 +61,7 @@ public class PlayerController : MonoBehaviour
         set;
     }
 
+    // The direction the player is facing.
     public Vector3 LookDirection
     {
         get;
@@ -61,7 +69,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Called when the script is first initialized.
-    void Start()
+    void Awake()
     {
         // Get the CharacterController component attached to the player.
         Controller = GetComponent<CharacterController>();
@@ -111,18 +119,25 @@ public class PlayerController : MonoBehaviour
         Controller.Move(velocity * Time.deltaTime);
     }
 
-    public void GetCharacterStates(PlayerGroundState ground, PlayerAirState air)
-    {
-        GroundState = ground;
-        AirState = air;
-
-        SetState(GroundState);
-    }
-
+    // Rotates the player to face the direction they are moving.
     public void FaceDirection()
     {
+        // Determine the direction to face based on the player's current forward direction and look direction.
         Vector3 dir = Vector3.Angle(transform.forward, LookDirection) >= 135f ? -Vector3.forward : LookDirection;
 
+        // Smoothly rotate the player towards the target direction.
         transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(dir), 500f * Time.deltaTime);
+    }
+
+    // Initializes the player's movement states and sets the initial state to GroundState.
+    public void GetCharacterStates(PlayerGroundState ground, PlayerAirState air, PlayerActionState action)
+    {
+        // Assign the provided state references to the corresponding properties.
+        GroundState = ground;
+        AirState = air;
+        ActionState = action;
+
+        // Set the player's initial state to the ground state.
+        SetState(GroundState);
     }
 }

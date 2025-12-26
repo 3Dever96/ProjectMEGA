@@ -12,13 +12,14 @@ GameObject:
   - component: {fileID: 2344133460226121560}
   - component: {fileID: 5945408965237413994}
   - component: {fileID: 5316897417807733814}
+  - component: {fileID: 4433932663845077915}
   m_Layer: 0
   m_Name: Zero
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1973246623783806998
 Transform:
   m_ObjectHideFlags: 0
@@ -47,6 +48,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fafe50fc4e85a3b45b7edfa6bb4c9c94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
+  height: 1.7
+  radius: 0.425
+  center: {x: 0, y: 0.85, z: 0}
+  stepDistance: 0.0625
+  stepTime: 0.11
+  moveSpeed: 5.15
+  actionSpeed: 9.375
+  jumpSpeed: 18.75
+  gravity: -54
+  stickForce: -5
+  terminalVelocity: -26.25
+  slideSpeed: -2
+  hasDoubleJump: 1
+  hasAirDash: 0
+  hasHover: 0
 --- !u!114 &5945408965237413994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,11 +75,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f69922003e82a7d4c86b34bab72e5319, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerGroundState
-  moveSpeed: 0
-  stepDistance: 0
-  stepTime: 0
-  stickForce: 0
-  jumpSpeed: 0
 --- !u!114 &5316897417807733814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,9 +87,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ec17a5ab1129d342875a900b5307d7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAirState
-  moveSpeed: 0
-  gravity: 0
-  fallSpeed: 0
+  dragFactor: 0.955
+--- !u!114 &4433932663845077915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4885393478886449980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 893e9c3f3248b6840b8288142a713b61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerDashState
+  actionTime: 0.633
+  shareVelocity: 0
+  airDashTime: 0.333
 --- !u!1001 &8046776625853226024
 PrefabInstance:
   m_ObjectHideFlags: 0

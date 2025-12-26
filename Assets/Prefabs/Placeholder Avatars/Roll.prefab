@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7682158965699612306}
   - component: {fileID: 2981615855611082318}
   - component: {fileID: 4925783948502114144}
+  - component: {fileID: 7989604760339862420}
   m_Layer: 0
   m_Name: Roll
   m_TagString: Untagged
@@ -47,6 +48,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fafe50fc4e85a3b45b7edfa6bb4c9c94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
+  height: 0
+  radius: 0
+  center: {x: 0, y: 0, z: 0}
+  stepDistance: 0.0625
+  stepTime: 0.11
+  moveSpeed: 5.15
+  actionSpeed: 9.375
+  jumpSpeed: 18.75
+  gravity: -54
+  stickForce: -5
+  terminalVelocity: -26.25
+  slideSpeed: -2
+  hasDoubleJump: 0
+  hasAirDash: 0
 --- !u!114 &2981615855611082318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,11 +74,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f69922003e82a7d4c86b34bab72e5319, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerGroundState
-  moveSpeed: 0
-  stepDistance: 0
-  stepTime: 0
-  stickForce: 0
-  jumpSpeed: 0
 --- !u!114 &4925783948502114144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,9 +86,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ec17a5ab1129d342875a900b5307d7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAirState
-  moveSpeed: 0
-  gravity: 0
-  fallSpeed: 0
+  dragFactor: 0.955
+--- !u!114 &7989604760339862420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7172768012166543087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08caee5995e712a4ba4b9c5bab59d16a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSlideState
+  actionTime: 0.433
+  shareVelocity: 0
 --- !u!1001 &3616170587269241321
 PrefabInstance:
   m_ObjectHideFlags: 0
