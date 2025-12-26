@@ -1445,6 +1445,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7682158965699612306, guid: d1455323ae81c154baabcc71b383b066, type: 3}
+      propertyPath: height
+      value: 1.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 7682158965699612306, guid: d1455323ae81c154baabcc71b383b066, type: 3}
+      propertyPath: radius
+      value: 0.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 7682158965699612306, guid: d1455323ae81c154baabcc71b383b066, type: 3}
+      propertyPath: center.y
+      value: 0.66
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1466,10 +1478,6 @@ PrefabInstance:
     - target: {fileID: 2308053318235018999, guid: d8d88a092fd22c74a80ffd2dd4fc92af, type: 3}
       propertyPath: m_Name
       value: Axl
-      objectReference: {fileID: 0}
-    - target: {fileID: 2308053318235018999, guid: d8d88a092fd22c74a80ffd2dd4fc92af, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4053048241708320814, guid: d8d88a092fd22c74a80ffd2dd4fc92af, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1599,10 +1607,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ProtoMan
       objectReference: {fileID: 0}
-    - target: {fileID: 3369932063684152861, guid: 16d7ef805d56d7d468b8f3b9be5a7547, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4640857112699934658, guid: 16d7ef805d56d7d468b8f3b9be5a7547, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1701,9 +1705,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4962189111828628442, guid: 37fc8a39d522fc54c9c152dcfb8ec204, type: 3}
+      propertyPath: height
+      value: 1.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 4962189111828628442, guid: 37fc8a39d522fc54c9c152dcfb8ec204, type: 3}
+      propertyPath: radius
+      value: 0.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 4962189111828628442, guid: 37fc8a39d522fc54c9c152dcfb8ec204, type: 3}
+      propertyPath: center.y
+      value: 0.66
+      objectReference: {fileID: 0}
     - target: {fileID: 8776552625845588758, guid: 37fc8a39d522fc54c9c152dcfb8ec204, type: 3}
       propertyPath: m_Name
       value: MegaMan
+      objectReference: {fileID: 0}
+    - target: {fileID: 8776552625845588758, guid: 37fc8a39d522fc54c9c152dcfb8ec204, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1729,7 +1749,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1046341843200629693, guid: a19aa66f09773fb4397672345391e023, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3408338004610652978, guid: a19aa66f09773fb4397672345391e023, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1832,10 +1852,6 @@ PrefabInstance:
     - target: {fileID: 4885393478886449980, guid: 3d90d1a0cda7ffc48bf2f39f85d3e419, type: 3}
       propertyPath: m_Name
       value: Zero
-      objectReference: {fileID: 0}
-    - target: {fileID: 4885393478886449980, guid: 3d90d1a0cda7ffc48bf2f39f85d3e419, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
